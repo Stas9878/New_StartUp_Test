@@ -1,5 +1,5 @@
 .DS_Store
-
+new_startup_venv
 # Django #
 *.log
 *.pot
