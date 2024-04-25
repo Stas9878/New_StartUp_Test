@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+
+#load .env
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #my_app
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -70,14 +78,31 @@ TEMPLATES = [
 WSGI_APPLICATION = 'app.wsgi.application'
 
 
+#.env
+NAME_DB = os.environ.get('NAME_DB')
+USER_DB = os.environ.get('USER_DB')
+PASSWORD_DB = os.environ.get('PASSWORD_DB')
+HOST_DB = os.environ.get('HOST_DB')
+PORT_DB = os.environ.get('PORT_DB')
+
+
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': NAME_DB,
+        'USER': USER_DB,
+        'PASSWORD': PASSWORD_DB,
+        'HOST': HOST_DB,
+        'PORT': PORT_DB,
+
     }
+
 }
 
 
@@ -121,3 +146,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
