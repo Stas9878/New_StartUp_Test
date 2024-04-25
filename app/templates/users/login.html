@@ -8,14 +8,14 @@
     <div class="row justify-content-md-center">
         <div class="col-md-5">
             <p class="h2 row justify-content-md-center">Вход</p>
-            <div class="m-5 p-4 border bg-light">
+            <div class="m-4 p-4 border bg-light">
                 <form method="post">
                     {% csrf_token %}
                     
                     {% for i in form %}
                         <div class="form-group">
                             {{ i.label }}
-                            <input type="{% get_input_type i.name %}"  class="form-control"  placeholder="{{ i.help_text }}">
+                            <input type="{% get_input_type i.name %}"  class="form-control"  name="{{ i.name }}" id="{{ i.name }}" placeholder="{{ i.help_text }}">
                         </div>
                         <br>
                     {% endfor %}

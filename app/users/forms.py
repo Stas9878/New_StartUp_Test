@@ -3,8 +3,8 @@ from django.contrib.auth import get_user_model
 
 
 class LoginUserForm(forms.Form):
-    username = forms.CharField(label='Логин')
-    password = forms.CharField(label='Пароль')
+    username = forms.CharField(label='Логин', help_text='Введите ваш логин')
+    password = forms.CharField(label='Пароль', help_text='Введите ваш пароль')
 
 
 class RegisterUserForm(forms.ModelForm):
@@ -20,7 +20,21 @@ class RegisterUserForm(forms.ModelForm):
             'first_name': 'Имя',
             'last_name': 'Фамилия'
         }
-        
+
         help_texts = {
             'email': 'Введите вашу электронную почту'
         }
+
+
+    def clean_password2(self) -> str:
+        cd = self.cleaned_data
+        if cd['password1'] != cd['password2']:
+            raise forms.ValidationError('Пароли не совпадают')
+        return cd['password1']
+    
+
+    def clean_email(self) -> str:
+        email = self.cleaned_data['email']
+        if get_user_model().objects.filter(email=email).exists():
+            raise forms.ValidationError('Этот email занят')
+        return email

@@ -15,7 +15,7 @@
                     {% for i in form %}
                         <div class="form-group">
                             {{ i.label }}
-                            <input type="{% get_input_type i.name %}"  class="form-control"  placeholder="{{ i.help_text }}">
+                            <input type="{% get_input_type i.name %}"  class="form-control" name="{{ i.name }}" id="{{ i.name }}" placeholder="{{ i.help_text }}">
                         </div>
                         <br>
                     {% endfor %}

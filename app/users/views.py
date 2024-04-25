@@ -5,8 +5,16 @@ from django.urls import reverse
 from .forms import LoginUserForm, RegisterUserForm
 
 
-def register_user(request):
-    form = RegisterUserForm()
+def register_user(request) -> HttpResponse:
+    if request.method == 'POST':
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password1'])
+            user.save()
+            return render(request, 'users/login.html')
+    else:
+        form = RegisterUserForm()
     return render(request, 'users/register.html', {'form': form})
 
 
