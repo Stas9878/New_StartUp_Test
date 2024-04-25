@@ -8,9 +8,9 @@ class LoginUserForm(forms.Form):
 
 
 class RegisterUserForm(forms.ModelForm):
-    username = forms.CharField(label='Логин')
-    password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput())
-    password2 = forms.CharField(label='Пароль', widget=forms.PasswordInput())
+    username = forms.CharField(label='Логин', help_text='Придумайте логин')
+    password1 = forms.CharField(label='Пароль', help_text='Придумайте пароль', widget=forms.PasswordInput())
+    password2 = forms.CharField(label='Повтор пароля', widget=forms.PasswordInput())
 
     class Meta:
         model = get_user_model()
@@ -18,5 +18,9 @@ class RegisterUserForm(forms.ModelForm):
         labels = {
             'email': 'E-mail',
             'first_name': 'Имя',
-            'last_name': 'Фамилия '
+            'last_name': 'Фамилия'
+        }
+        
+        help_texts = {
+            'email': 'Введите вашу электронную почту'
         }

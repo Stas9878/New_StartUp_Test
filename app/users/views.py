@@ -2,7 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
-from .forms import LoginUserForm
+from .forms import LoginUserForm, RegisterUserForm
+
+
+def register_user(request):
+    form = RegisterUserForm()
+    return render(request, 'users/register.html', {'form': form})
 
 
 def login_user(request) -> HttpResponseRedirect | HttpResponse:
