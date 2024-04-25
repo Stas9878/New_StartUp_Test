@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load users_tags %}
 
 {% block title %}sURL | Вход{% endblock %}
 
@@ -6,21 +7,18 @@
 <div class="container px-1">
     <div class="row justify-content-md-center">
         <div class="col-md-5">
-            <h1>Вход</h1>
+            <p class="h2 row justify-content-md-center">Вход</p>
             <div class="m-5 p-4 border bg-light">
                 <form method="post">
                     {% csrf_token %}
-                    <div class="form-group">
-                        <label for="username">Логин</label>
-                        <input type="username" name="username" class="form-control" id="username" placeholder="Введите ваш логин">
-                    </div>
                     
-                    <br>
-                    <div class="form-group">
-                        <label for="password">Пароль</label>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Введите ваш пароль">
-                    </div>
-                    <br>
+                    {% for i in form %}
+                        <div class="form-group">
+                            {{ i.label }}
+                            <input type="{% get_input_type i.name %}"  class="form-control"  placeholder="{{ i.help_text }}">
+                        </div>
+                        <br>
+                    {% endfor %}
 
                     <button type="submit" class="btn btn-primary">Войти</button>
                 </form>
