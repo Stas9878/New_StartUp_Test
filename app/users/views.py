@@ -31,7 +31,7 @@ def login_user(request) -> HttpResponseRedirect | HttpResponse:
 
             if user and user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('core:index'))
+                return HttpResponseRedirect(reverse('links:index'))
     else:
         form = LoginUserForm()
     
