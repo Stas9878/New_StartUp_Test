@@ -2,5 +2,24 @@
 
 
 {% block content %}
+<div class="container px-1">
+    <div class="row justify-content-md-center">
+        <div class="col-md-5">
+            <p class="h2 row justify-content-md-center">sURL</p>
+            <div class="m-4 p-4 border bg-light">
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        {{ form.target_url.label }} | (https://...)
+                        <input type="url"  class="form-control"  name="{{ form.target_url.name }}" id="{{ form.target_url.name }}" placeholder="{{ form.target_url.help_text }}">
+                    </div>
+                    <br>
 
+                    <button type="submit" class="btn btn-primary">Сформировать ссылку</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
