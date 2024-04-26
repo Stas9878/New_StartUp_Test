@@ -1,5 +1,6 @@
 from .models import Links
 from urllib.parse import urlsplit
+from datetime import datetime
 import string, random
 
 
@@ -19,6 +20,8 @@ def get_encode_url(user, old_url: str) -> str:
     url = Links.objects.filter(old_url=old_url).first()
     
     if url:
+        url.last_access = datetime.now()
+        url.save()
         return url.new_url
     
     new_data_url = _encode_url(old_url)
