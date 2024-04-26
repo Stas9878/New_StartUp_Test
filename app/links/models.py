@@ -25,3 +25,6 @@ class Links(models.Model):
     class Meta:
         verbose_name = 'Ссылку'
         verbose_name_plural = 'Ссылки'
+
+    def __str__(self):
+        return self.new_url
