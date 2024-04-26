@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .forms import TinyUrlForm
+from .utils import get_decode_url, get_encode_url
 
 
 def index_route(request) -> HttpResponse:
@@ -9,7 +10,7 @@ def index_route(request) -> HttpResponse:
 
         if form.is_valid():
             target_url = form.data['target_url']
-            print(target_url)
+            encode_url = get_encode_url(request.user, target_url)
             pass
     else:
         form = TinyUrlForm()
