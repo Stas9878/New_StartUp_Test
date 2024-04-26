@@ -13,6 +13,10 @@
                     <div class="form-group">
                         {{ form.target_url.label }} | (https://...)
                         <input type="url"  class="form-control"  name="{{ form.target_url.name }}" id="{{ form.target_url.name }}" placeholder="{{ form.target_url.help_text }}">
+                        {% if encode_url %}
+                            <br>
+                            Результат: <a href="{{ target_url }}">{{ encode_url }}</a>
+                        {% endif %}
                     </div>
                     <br>
 

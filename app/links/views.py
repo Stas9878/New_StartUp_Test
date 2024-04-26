@@ -11,7 +11,11 @@ def index_route(request) -> HttpResponse:
         if form.is_valid():
             target_url = form.data['target_url']
             encode_url = get_encode_url(request.user, target_url)
-            pass
+            return render(request, 'links/index.html', {
+                'form': form, 
+                'encode_url': encode_url,
+                'target_url': target_url,
+            }) 
     else:
         form = TinyUrlForm()
         
