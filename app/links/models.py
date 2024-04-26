@@ -7,3 +7,7 @@ class Links(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='links')
     created_at = models.DateTimeField(auto_now_add=True)
     last_access = models.DateTimeField(max_length=500, auto_now=True)
+
+    class Meta:
+        verbose_name = 'Ссылку'
+        verbose_name_plural = 'Ссылки'
