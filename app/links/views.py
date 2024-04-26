@@ -20,3 +20,5 @@ def index_route(request) -> HttpResponse:
         form = TinyUrlForm()
         
     return render(request, 'links/index.html', {'form': form})
+
+

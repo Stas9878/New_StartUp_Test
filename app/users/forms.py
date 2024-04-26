@@ -38,3 +38,4 @@ class RegisterUserForm(forms.ModelForm):
         if get_user_model().objects.filter(email=email).exists():
             raise forms.ValidationError('Этот email занят')
         return email
+    

@@ -1,0 +1,41 @@
+{% extends 'links/base.html' %}
+
+{% block title %}sURL | Профиль{% endblock %}
+
+{% block content %}
+<div class="container px-1">
+    <div class="row justify-content-md-center">
+        <div class="col-md-15">
+            <p class="h2 row justify-content-md-center">Профиль: {{ user.username }}</p>
+            <p class="h4 row justify-content-md-center text-muted">Мои ссылки</p>
+            <div class="m-4 p-4 border bg-light">
+                {% if links %}
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Старый URL</th>
+                            <th scope="col">Новый URL</th>
+                            <th scope="col">Дата создания</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for link in links %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td><a href="{{ link.old_url }}" title="{{ link.old_url }}" >{{ link.old_url|truncatechars:60 }}</a></td>
+                                    <td><a href="{{ link.old_url }}">{{ link.new_url|truncatechars:40}}</a></td>
+                                    <td>{{ link.created_at }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="h4 row justify-content-md-center text-muted">У вас нет ни одной ссылки</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

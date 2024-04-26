@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
 from .forms import LoginUserForm, RegisterUserForm
 
 
@@ -42,3 +44,11 @@ def logout_user(request) -> HttpResponse:
     logout(request)
     return HttpResponseRedirect(reverse('users:login'))
 
+
+@login_required
+def profile_user(request) -> HttpResponse:
+    links_list = request.user.links.all()
+    return render(request, 'users/profile.html', {
+        'user': request.user,
+        'links': links_list
+    })
