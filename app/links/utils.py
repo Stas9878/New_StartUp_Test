@@ -9,6 +9,8 @@ CHARS = string.ascii_letters
 
 
 def _encode_url(url: str) -> str:
+    '''Функция для кодирования url'''
+
     code = ''.join(random.choice(CHARS) for _ in range(8))
     domain = urlsplit(url).netloc
     return {
@@ -18,6 +20,8 @@ def _encode_url(url: str) -> str:
     
 
 def get_encode_url(user, old_url: str) -> str:
+    '''Функция для получения кодированного url'''
+    
     url = Links.objects.filter(old_url=old_url).first()
     
     if url:
@@ -39,6 +43,8 @@ def get_encode_url(user, old_url: str) -> str:
 
 
 def get_decode_url(new_url: str) -> Links:
+    '''Функция для декодирования url'''
+
     try:
         url = Links.objects.get(new_url=new_url)
         

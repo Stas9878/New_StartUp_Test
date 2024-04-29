@@ -2,6 +2,8 @@ from django import forms
 
 
 class TinyUrlForm(forms.Form):
+    '''Форма для главной страницы'''
+
     target_url = forms.URLField(
         required=True, 
         label='Shorter URLs', 

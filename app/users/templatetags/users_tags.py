@@ -5,6 +5,11 @@ register = template.Library()
 
 @register.simple_tag()
 def get_input_type(label: str) -> str:
+    '''
+        Кастомный тэг для возврата типа для поля input 
+        в соответствии с полем формы
+    '''
+    
     input_types = {
         'username': 'text',
         'email': 'email',
@@ -14,4 +19,5 @@ def get_input_type(label: str) -> str:
     }
     if res := input_types.get(label.lower()):
         return res
+    
     return 'text'

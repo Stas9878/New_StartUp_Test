@@ -8,6 +8,8 @@ from .forms import LoginUserForm, RegisterUserForm
 
 
 def register_user(request) -> HttpResponse:
+    '''Роутер для регистрации юзеров'''
+    
     if request.method == 'POST':
         form = RegisterUserForm(request.POST)
         if form.is_valid():
@@ -21,6 +23,8 @@ def register_user(request) -> HttpResponse:
 
 
 def login_user(request) -> HttpResponseRedirect | HttpResponse:
+    '''Роутер для аутентификации юзеров'''
+
     if request.method == 'POST':
         form = LoginUserForm(request.POST)
         if form.is_valid():
@@ -41,12 +45,16 @@ def login_user(request) -> HttpResponseRedirect | HttpResponse:
 
 
 def logout_user(request) -> HttpResponse:
+    '''Роутер для логаута юзеров'''
+
     logout(request)
     return HttpResponseRedirect(reverse('users:login'))
 
 
 @login_required
 def profile_user(request) -> HttpResponse:
+    '''Роутер для отображения профиля юзера'''
+
     links_list = request.user.links.order_by('-created_at')
     return render(request, 'users/profile.html', {
         'user': request.user,

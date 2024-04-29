@@ -10,6 +10,8 @@ from links.utils import get_encode_url, get_decode_url
 
 
 class LinkAPIView(APIView):
+    '''API-route для возврата всех url-ов пользователя'''
+
     @swagger_auto_schema(responses={'200': LinksSerializer(many=True)})
     def get(self, request) -> Response:
         if request.user.is_authenticated:
@@ -19,6 +21,8 @@ class LinkAPIView(APIView):
 
 
 class CreateLinkAPIView(APIView):
+    '''API-route для создания короткого url'''
+
     params = openapi.Parameter('url', openapi.IN_HEADER, description="Введите url который хотите сократить", type=openapi.TYPE_STRING)
 
     @swagger_auto_schema(manual_parameters=[params], responses={'200': LinksSerializer})
@@ -30,6 +34,8 @@ class CreateLinkAPIView(APIView):
     
 
 class DecodeLinkAPIView(APIView):
+    '''API-route для декодирования url'''
+
     params = openapi.Parameter('url', openapi.IN_HEADER, description="Введите url который нужно декодировать", type=openapi.TYPE_STRING)
 
     @swagger_auto_schema(manual_parameters=[params], responses={'200': LinksSerializer})

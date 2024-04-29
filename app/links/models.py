@@ -3,6 +3,8 @@ from django.contrib.auth import get_user_model
 
 
 class Links(models.Model):
+    '''Модель для ссылок'''
+
     code = models.CharField(
         max_length=8, 
         unique=True, 

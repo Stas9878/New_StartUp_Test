@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     #my_app
     'links',
     'users',
+    'api',
 
     #utils
     'bootstrap5',
@@ -84,7 +85,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'app.wsgi.application'
 
 
-#.env
+#.env or .env_example
 NAME_DB = os.environ.get('NAME_DB')
 USER_DB = os.environ.get('USER_DB')
 PASSWORD_DB = os.environ.get('PASSWORD_DB')
@@ -146,6 +147,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
@@ -160,6 +162,7 @@ LOGIN_URL = 'users:login'
 LOGOUT_URL = 'users:logout'
 
 
+#SWAGGER
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
         'basic': {

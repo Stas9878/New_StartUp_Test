@@ -5,6 +5,11 @@ from .utils import get_decode_url, get_encode_url
 
 
 def index_route(request) -> HttpResponse:
+    '''
+        Роут для отображения главной страницы 
+        с формой TinyUrlForm
+    '''
+
     if request.method == 'POST':
         form = TinyUrlForm(request.POST)
 
