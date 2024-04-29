@@ -7,6 +7,8 @@
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
+    {% load static %}
+    <link rel="stylesheet" href='{% static "css/styles.css" %}'' />
     <title>{% block title %}sURL{% endblock %}</title>
 </head>
 <body>
@@ -33,17 +35,20 @@
             </div>
         </div>
     </nav>
-<br>
-{% block content %}
-{% endblock %}
-<br>
-<footer class="bg-body-tertiary text-center text-lg-start">
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-      © 2024 Copyright:
-      <a class="text-body" href="https://mdbootstrap.com/">Test-sURL.com</a>
+    <br>
+    {% block content %}
+    {% endblock %}
+    <br>
+    <br>
+    <div class="footer">
+        <footer class="bg-body-tertiary text-center text-lg-start">
+            <!-- Copyright -->
+            <div class="text-center p-3">
+                © 2024 Copyright:
+                <a class="text-body" href="/">sURL.com</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
     </div>
-    <!-- Copyright -->
-  </footer>
 </body>
 </html>
