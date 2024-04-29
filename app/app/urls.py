@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .yasg import urlpatterns as swagger_urls
 
 
 urlpatterns = [
@@ -24,6 +25,6 @@ urlpatterns = [
     path('api/v1/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/v1/', include('api.urls')),
     path('users/', include('users.urls')),
-    
-    
 ]
+
+urlpatterns += swagger_urls

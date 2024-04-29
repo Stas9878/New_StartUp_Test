@@ -49,7 +49,8 @@ INSTALLED_APPS = [
 
     #utils
     'bootstrap5',
-    'rest_framework'
+    'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -151,3 +152,17 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+LOGIN_URL = 'users:login'
+LOGOUT_URL = 'users:logout'
+
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
+    'LOGIN_URL': 'users:login',
+    'LOGOUT_URL': 'users:logout'
+}
