@@ -1,7 +1,8 @@
-from .models import Links
+from django.core.exceptions import ObjectDoesNotExist
 from urllib.parse import urlsplit
 from datetime import datetime
 import string, random
+from .models import Links
 
 
 CHARS = string.ascii_letters
@@ -37,5 +38,13 @@ def get_encode_url(user, old_url: str) -> str:
     return new_url
 
 
-def get_decode_url(new_url: str):
-    pass
+def get_decode_url(new_url: str) -> Links:
+    try:
+        url = Links.objects.get(new_url=new_url)
+        
+        url.last_access = datetime.now()
+        url.save()
+
+        return url
+    except ObjectDoesNotExist:
+        return None
