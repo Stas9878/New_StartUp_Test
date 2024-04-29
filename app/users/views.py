@@ -47,7 +47,7 @@ def logout_user(request) -> HttpResponse:
 
 @login_required
 def profile_user(request) -> HttpResponse:
-    links_list = request.user.links.all()
+    links_list = request.user.links.order_by('-created_at')
     return render(request, 'users/profile.html', {
         'user': request.user,
         'links': links_list
