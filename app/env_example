@@ -1,5 +1,0 @@
-NAME_DB = my_db_name
-USER_DB = user
-PASSWORD_DB = 1235678
-HOST_DB = localhost
-PORT_DB = 5432

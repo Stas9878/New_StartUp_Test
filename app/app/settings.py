@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-jyelbk@*jl)pz2k0qk09&%qa2^6oc2foh3b%&1l#ib@r-4wcus
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '[::1]']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
 
     #my_app
     'links',
