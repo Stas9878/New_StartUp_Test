@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .forms import TinyUrlForm
-from .utils import get_decode_url, get_encode_url
+from .utils import get_encode_url
 
 
 def index_route(request) -> HttpResponse:
