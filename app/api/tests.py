@@ -9,7 +9,6 @@ from links.models import Links
 
 class APITest(TestCase):
     '''Тестирование API'''
-
     def setUp(self) -> None:
         user = get_user_model().objects.create_user(username='admin', password='12345678')
         link1 = Links.objects.create(
@@ -52,7 +51,7 @@ class APITest(TestCase):
 
         request = factory.post('/api/v1/decode-url/', headers={'url': 'example.com/qwertyui'})
         response = view(request)
-        
+
         link = Links.objects.get(user=user).old_url
         old_url = response.data['old_url']
 
